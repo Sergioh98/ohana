@@ -37,7 +37,7 @@ body{font-family:var(--redonda);color:var(--blanco);min-height:100vh;overflow-x:
 .btn{font:inherit;font-weight:600;font-size:1.05rem;border:none;cursor:pointer;padding:14px 28px;border-radius:999px;
   background:var(--hibisco);color:#fff;margin-top:14px;box-shadow:0 6px 0 #c23a64}
 .btn:active{transform:translateY(4px);box-shadow:0 2px 0 #c23a64}
-.pista{font-size:.9rem;margin-top:16px;opacity:.7}
+.pista{font-size:.95rem;margin-top:18px;opacity:.8;line-height:1.5}
 .error{color:var(--arena);min-height:1.4em;margin-top:10px;font-weight:600}
 .temblar{animation:temblar .4s}
 @keyframes temblar{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
@@ -77,13 +77,13 @@ h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena)
 
 <section id="candado">
   <form class="caja" id="formCandado" autocomplete="off">
-    <span class="flor">🌺</span>
+    <span class="flor">🦂</span>
     <h1>Esto es solo para ti</h1>
     <p>Escribe la palabra secreta para entrar</p>
     <input id="clave" type="password" placeholder="palabra secreta" aria-label="Palabra secreta" required>
     <button class="btn" type="submit">Abrir</button>
     <div class="error" id="error" role="alert"></div>
-    <div class="pista">Pista: en hawaiano significa familia 💙</div>
+    <div class="pista">Pista: a los escorpio les sobra, los astros la mueven, y según <i>Deja de ser tú</i>, la tuya crea tu realidad ✨</div>
   </form>
 </section>
 
@@ -112,7 +112,7 @@ h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena)
 /* ✏️ PERSONALIZA AQUÍ */
 var CONFIG = {
   nombre: "Silenis León",
-  claveBase64: "b2hhbmE=",       // "ohana" en base64. Para cambiarla: en la consola escribe btoa("otra")
+  claveBase64: "ZW5lcmdpYQ==",   // "energia" en base64 (acepta con o sin tilde). Para cambiarla: en la consola escribe btoa("otra")
   mensaje: "No suelo hacer estas cosas, pero contigo me dieron ganas. Dicen que uno atrae lo que piensa… y últimamente pienso bastante en ti. Así que te hice este rinconcito, solo tuyo 🌺",
   videos: [                      // 👉 ID de YouTube: lo que va después de "v=" o de "/shorts/"
     { id: "U0i8XEcYx10", titulo: "Sus mejores momentos" },
@@ -150,7 +150,7 @@ function lluvia(n, emojis) {
 }
 
 var form = document.getElementById('formCandado'), input = document.getElementById('clave');
-var fallos = ["Casi… intenta otra vez 🌺", "Nop, piensa en la pista 💙", "Es una palabra hawaiana 🏝️"];
+var fallos = ["Casi… siente la vibra y vuelve a intentar ✨", "Nop, lee la pista otra vez 🦂", "Piensa en lo que mueve el universo 🌌"];
 var intentos = 0;
 function norm(t) { return t.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f'’]/g, ''); }
 
@@ -170,7 +170,7 @@ function abrir() {
   document.getElementById('candado').classList.add('abierto');
   document.getElementById('contenido').classList.remove('oculto');
   setTimeout(function () { var c = document.getElementById('candado'); if (c) c.remove(); }, 900);
-  lluvia(40, ['🌺', '💙', '🌸', '💕', '✨']);
+  lluvia(40, ['🌺', '💙', '🌸', '✨', '⭐']);
   document.getElementById('saludo').textContent = 'Hola, ' + CONFIG.nombre;
   escribir(CONFIG.mensaje);
   pintarVideos();
@@ -223,7 +223,7 @@ function huir(e) {
 document.getElementById('si').addEventListener('click', function () {
   document.getElementById('respuesta').textContent = CONFIG.respuestaSi;
   no.style.display = 'none';
-  lluvia(80, ['💙', '🌺', '💕', '💖', '🌸']);
+  lluvia(80, ['💙', '🌺', '💕', '✨', '🌸']);
 });
 
 try { if (sessionStorage.getItem('abierto') === '1') abrir(); } catch (x) {}
