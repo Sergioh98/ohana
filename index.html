@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para ti, Silenis 🌺</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--laguna:#0E2A47;--ola:#1B5F8C;--turquesa:#2EC4B6;--hibisco:#FF5C8A;--arena:#FFE2B8;--blanco:#FDF8F2;
+--mano:'Caveat',cursive;--redonda:'Fredoka',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--redonda);color:var(--blanco);min-height:100vh;overflow-x:hidden;
+background:linear-gradient(180deg,var(--laguna) 0%,var(--ola) 70%,#2a7fa8 100%) fixed}
+.estrellas,.petalos{position:fixed;inset:0;pointer-events:none}
+.estrellas{z-index:0}.petalos{z-index:1;overflow:hidden}
+.estrella{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:titilar 3s ease-in-out infinite}
+@keyframes titilar{0%,100%{opacity:.2}50%{opacity:1;transform:scale(1.3)}}
+.olas{position:fixed;left:0;right:0;bottom:0;height:120px;pointer-events:none;z-index:0}
+.olas svg{position:absolute;bottom:0;width:200%;height:100%;animation:mar 12s linear infinite}
+.olas svg:nth-child(2){animation-duration:18s;bottom:10px}
+@keyframes mar{to{transform:translateX(-50%)}}
+.petalo{position:absolute;top:-40px;animation:caer linear forwards}
+@keyframes caer{0%{opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(540deg) translateX(60px)}}
+#candado{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:24px;
+background:radial-gradient(circle at 50% 30%,rgba(46,196,182,.25),transparent 60%),var(--laguna);transition:opacity .8s,transform .8s}
+#candado.abierto{opacity:0;transform:scale(1.1);pointer-events:none}
+.caja{width:min(420px,100%);text-align:center;background:rgba(255,255,255,.07);border:2px dashed rgba(255,226,184,.5);border-radius:28px;padding:36px 28px}
+.flor{font-size:64px;display:inline-block;animation:latido 1.6s ease-in-out infinite}
+@keyframes latido{0%,100%{transform:scale(1) rotate(-6deg)}50%{transform:scale(1.15) rotate(6deg)}}
+.caja h1{font-family:var(--mano);font-size:2.6rem;color:var(--arena);margin:10px 0 4px}
+.caja p{opacity:.85;margin-bottom:22px}
+.caja input{width:100%;padding:14px 18px;border-radius:999px;border:none;outline:none;font:inherit;font-size:1.1rem;text-align:center;color:var(--laguna)}
+.caja input:focus-visible{box-shadow:0 0 0 4px var(--turquesa)}
+.btn{font:inherit;font-weight:600;font-size:1.05rem;border:none;cursor:pointer;padding:14px 28px;border-radius:999px;
+background:var(--hibisco);color:#fff;margin-top:14px;box-shadow:0 6px 0 #c23a64}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #c23a64}
+.pista{font-size:.9rem;margin-top:16px;opacity:.7}
+.error{color:var(--arena);min-height:1.4em;margin-top:10px;font-weight:600}
+.temblar{animation:temblar .4s}
+@keyframes temblar{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+main{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:60px 20px 180px}
+.hero{text-align:center;min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.saludo{font-family:var(--mano);font-size:clamp(3rem,11vw,6.5rem);color:var(--arena);line-height:1;text-shadow:0 4px 0 var(--hibisco)}
+.maquina{font-size:clamp(1.1rem,3.5vw,1.45rem);max-width:34ch;margin:26px auto 0;line-height:1.6;min-height:5em}
+.cursor{display:inline-block;width:2px;height:1.1em;background:var(--arena);vertical-align:middle;animation:parpadeo 1s steps(1) infinite}
+@keyframes parpadeo{50%{opacity:0}}
+.bajar{margin-top:40px;font-size:2rem;animation:flotar 2s ease-in-out infinite}
+@keyframes flotar{50%{transform:translateY(10px)}}
+h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena);text-align:center;margin:40px 0 8px}
+.sub{text-align:center;opacity:.8;margin-bottom:30px}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.video{background:var(--blanco);color:var(--laguna);padding:12px 12px 16px;border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.video:nth-child(odd){transform:rotate(-2deg)}.video:nth-child(even){transform:rotate(2deg)}
+.marco{aspect-ratio:9/16;max-height:520px;width:100%;background:var(--laguna);border-radius:4px;overflow:hidden;display:grid;place-items:center}
+.marco.horizontal{aspect-ratio:16/9}
+.marco iframe{width:100%;height:100%;border:0}
+.vacio{color:var(--arena);text-align:center;padding:20px}
+.video p{font-family:var(--mano);font-size:1.6rem;text-align:center;margin-top:8px}
+.pregunta{text-align:center;margin-top:90px}
+.botones{display:flex;gap:18px;justify-content:center;min-height:80px}
+#no{background:var(--turquesa);box-shadow:0 6px 0 #1d8a80;transition:left .25s,top .25s}
+#no.huyendo{position:fixed;z-index:20}
+.respuesta{font-family:var(--mano);font-size:2.4rem;color:var(--arena);margin-top:30px}
+.oculto{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="estrellas" id="estrellas"></div>
+<div class="petalos" id="petalos"></div>
+<div class="olas" aria-hidden="true">
+<svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path fill="#2EC4B6" fill-opacity=".35" d="M0,60 C120,100 240,20 360,60 C480,100 600,20 720,60 C840,100 960,20 1080,60 C1200,100 1320,20 1440,60 C1560,100 1680,20 1800,60 C1920,100 2040,20 2160,60 C2280,100 2400,20 2520,60 C2640,100 2760,20 2880,60 L2880,120 L0,120Z"/></svg>
+<svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path fill="#FFE2B8" fill-opacity=".25" d="M0,80 C180,40 360,110 540,80 C720,50 900,110 1080,80 C1260,50 1350,90 1440,80 C1620,40 1800,110 1980,80 C2160,50 2340,110 2520,80 C2700,50 2790,90 2880,80 L2880,120 L0,120Z"/></svg>
+</div>
+
+<section id="candado">
+<form class="caja" id="formCandado" autocomplete="off">
+<span class="flor">🌺</span>
+<h1>Esto es solo para ti</h1>
+<p>Escribe la palabra secreta para entrar</p>
+<input id="clave" type="password" placeholder="palabra secreta" aria-label="Palabra secreta" required>
+<button class="btn" type="submit">Abrir</button>
+<div class="error" id="error" role="alert"></div>
+<div class="pista">Pista: en hawaiano significa familia 💙</div>
+</form>
+</section>
+
+<main id="contenido" class="oculto">
+<section class="hero">
+<div class="saludo" id="saludo">Hola</div>
+<div class="maquina"><span id="texto"></span><span class="cursor"></span></div>
+<div class="bajar">⌄</div>
+</section>
+<section>
+<h2>Cositas que me recuerdan a ti</h2>
+<p class="sub">Dale play, te van a sacar una sonrisa</p>
+<div class="videos" id="videos"></div>
+</section>
+<section class="pregunta">
+<h2>¿Quieres ser parte de mi ohana?</h2>
+<div class="botones">
+<button class="btn" id="si">Sí 💙</button>
+<button class="btn" id="no">No</button>
+</div>
+<div class="respuesta" id="respuesta" aria-live="polite"></div>
+</section>
+</main>
+
+<script>
+/* ✏️ PERSONALIZA AQUÍ */
+var CONFIG = {
+  nombre: "Silenis",
+  claveBase64: "b2hhbmE=",   // "ohana". Para cambiarla, en la consola del navegador: btoa("otra")
+  mensaje: "Hay personas que llegan a tu vida como una ola bonita: sin avisar y dejándolo todo más brillante. Tú eres esa ola, Silenis León. Hice esta página solo para decirte que me encantas 🌺",
+  // ID de YouTube: lo que va después de "v=" o de "/shorts/". vertical:true para Shorts
+  videos: [
+    { id: "", titulo: "El más tierno", vertical: true },
+    { id: "", titulo: "Este me dio risa", vertical: true },
+    { id: "", titulo: "Y este me hizo pensar en ti", vertical: true }
+  ],
+  respuestaSi: "¡Sabía que dirías que sí! 💙🌺"
+};
+
+var reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cielo = document.getElementById('estrellas');
+for (var i = 0; i < 70; i++) {
+  var e = document.createElement('span');
+  e.className = 'estrella';
+  e.style.left = (Math.random()*100) + '%';
+  e.style.top = (Math.random()*70) + '%';
+  e.style.animationDelay = (Math.random()*3) + 's';
+  cielo.appendChild(e);
+}
+
+function lluvia(n, emojis) {
+  if (reducido) return;
+  var capa = document.getElementById('petalos');
+  for (var k = 0; k < n; k++) setTimeout(function(){
+    var p = document.createElement('span');
+    p.className = 'petalo';
+    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    p.style.left = (Math.random()*100) + 'vw';
+    p.style.fontSize = (16 + Math.random()*20) + 'px';
+    p.style.animationDuration = (4 + Math.random()*4) + 's';
+    capa.appendChild(p);
+    p.addEventListener('animationend', function(){ p.remove(); });
+  }, k * 120);
+}
+
+var form = document.getElementById('formCandado'), input = document.getElementById('clave');
+var fallos = ["Casi… intenta otra vez 🌺", "Nop, piensa en la pista 💙", "Es una palabra hawaiana 🏝️"];
+var intentos = 0;
+function norm(t){ return t.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f'’]/g,''); }
+
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  if (norm(input.value) === norm(atob(CONFIG.claveBase64))) {
+    try { sessionStorage.setItem('abierto','1'); } catch(err) {}
+    abrir();
+  } else {
+    document.getElementById('error').textContent = fallos[intentos++ % fallos.length];
+    form.classList.remove('temblar'); void form.offsetWidth; form.classList.add('temblar');
+    input.select();
+  }
+});
+
+function abrir() {
+  var cand = document.getElementById('candado');
+  if (cand) { cand.classList.add('abierto'); setTimeout(function(){ cand.remove(); }, 900); }
+  document.getElementById('contenido').classList.remove('oculto');
+  lluvia(40, ['🌺','💙','🌸','💕','✨']);
+  document.getElementById('saludo').textContent = 'Hola, ' + CONFIG.nombre;
+  escribir(CONFIG.mensaje);
+  pintarVideos();
+}
+
+function escribir(txt) {
+  var el = document.getElementById('texto');
+  if (reducido) { el.textContent = txt; return; }
+  var j = 0;
+  (function paso(){ if (j <= txt.length) { el.textContent = txt.slice(0, j++); setTimeout(paso, 45); } })();
+}
+
+function pintarVideos() {
+  var cont = document.getElementById('videos');
+  CONFIG.videos.forEach(function(v){
+    var card = document.createElement('article');
+    card.className = 'video';
+    var marco = document.createElement('div');
+    marco.className = 'marco' + (v.vertical ? '' : ' horizontal');
+    if (v.id) {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.id) + '?rel=0&playsinline=1';
+      f.title = v.titulo; f.loading = 'lazy';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+      marco.appendChild(f);
+    } else {
+      marco.innerHTML = '<div class="vacio">🌺<br>Aquí va un video.<br>Pega su ID en CONFIG.videos</div>';
+    }
+    var t = document.createElement('p');
+    t.textContent = v.titulo;
+    card.appendChild(marco); card.appendChild(t);
+    cont.appendChild(card);
+  });
+}
+
+var no = document.getElementById('no');
+function huir(e) {
+  e.preventDefault();
+  no.classList.add('huyendo');
+  no.style.left = Math.max(20, Math.random()*(innerWidth - no.offsetWidth - 20)) + 'px';
+  no.style.top = Math.max(20, Math.random()*(innerHeight - no.offsetHeight - 20)) + 'px';
+  var f = ['No','¿Segura?','Piénsalo 🥺','Nop','Jaja no'];
+  no.textContent = f[Math.floor(Math.random()*f.length)];
+}
+['mouseenter','touchstart','click'].forEach(function(ev){ no.addEventListener(ev, huir, {passive:false}); });
+
+document.getElementById('si').addEventListener('click', function(){
+  document.getElementById('respuesta').textContent = CONFIG.respuestaSi;
+  no.style.display = 'none';
+  lluvia(80, ['💙','🌺','💕','💖','🌸']);
+});
+
+try { if (sessionStorage.getItem('abierto') === '1') abrir(); } catch(err) {}
+</script>
+</body>
+</html>
