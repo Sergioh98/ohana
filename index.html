@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="google" content="notranslate">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Para ti, Silenis 🌺</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -43,14 +44,14 @@ body{font-family:var(--redonda);color:var(--blanco);min-height:100vh;overflow-x:
 main{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:60px 20px 180px}
 .hero{text-align:center;min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .saludo{font-family:var(--mano);font-size:clamp(3rem,11vw,6.5rem);color:var(--arena);line-height:1;text-shadow:0 4px 0 var(--hibisco)}
-.maquina{font-size:clamp(1.1rem,3.5vw,1.45rem);max-width:34ch;margin:26px auto 0;line-height:1.6;min-height:5em}
+.maquina{font-size:clamp(1.1rem,3.5vw,1.45rem);max-width:34ch;margin:26px auto 0;line-height:1.6;min-height:7em}
 .cursor{display:inline-block;width:2px;height:1.1em;background:var(--arena);vertical-align:middle;animation:parpadeo 1s steps(1) infinite}
 @keyframes parpadeo{50%{opacity:0}}
 .bajar{margin-top:40px;font-size:2rem;animation:flotar 2s ease-in-out infinite}
 @keyframes flotar{50%{transform:translateY(10px)}}
 h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena);text-align:center;margin:40px 0 8px}
 .sub{text-align:center;opacity:.8;margin-bottom:30px}
-.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;align-items:start}
 .video{background:var(--blanco);color:var(--laguna);padding:12px 12px 16px;border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
 .video:nth-child(odd){transform:rotate(-2deg)}.video:nth-child(even){transform:rotate(2deg)}
 .marco{aspect-ratio:9/16;max-height:520px;width:100%;background:var(--laguna);border-radius:4px;overflow:hidden;display:grid;place-items:center}
@@ -113,11 +114,12 @@ h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena)
 var CONFIG = {
   nombre: "Silenis León",
   claveBase64: "b2hhbmE=",       // "ohana" en base64. Para cambiarla: en la consola escribe btoa("otra")
-  mensaje: "Hay personas que llegan a tu vida como una ola bonita: sin avisar y dejándolo todo más brillante. Tú eres esa ola. Hice esta página solo para decirte que me encantas 🌺",
+  mensaje: "Leí una vez que lo que sientes con el corazón, antes de que exista, la vida encuentra la forma de hacerlo real. Ahora lo creo: pensé tanto en alguien como tú, que un día el universo simplemente te puso en mi camino. Gracias por ser la prueba bonita de que lo que uno sueña sí llega 🌺",
   videos: [                      // 👉 ID de YouTube: lo que va después de "v=" o de "/shorts/"
-    { id: "", titulo: "El más tierno", vertical: true },
-    { id: "", titulo: "Este me dio risa", vertical: true },
-    { id: "", titulo: "Y este me hizo pensar en ti", vertical: true }
+    { id: "GYy68npQrpU", titulo: "Cuando se conocieron", vertical: true },
+    { id: "fdH2GO9X-Ak", titulo: "Ohana, aunque haya desorden", vertical: true },
+    { id: "KD2EQzWW94A", titulo: "Su primer hogar", vertical: false },
+    { id: "U0i8XEcYx10", titulo: "Sus mejores momentos", vertical: false }
   ],
   respuestaSi: "¡Sabía que dirías que sí! 💙🌺"
 };
@@ -179,7 +181,7 @@ function escribir(txt) {
   var el = document.getElementById('texto');
   if (reducido) { el.textContent = txt; return; }
   var j = 0;
-  (function paso() { if (j <= txt.length) { el.textContent = txt.slice(0, j++); setTimeout(paso, 45); } })();
+  (function paso() { if (j <= txt.length) { el.textContent = txt.slice(0, j++); setTimeout(paso, 40); } })();
 }
 
 function pintarVideos() {
@@ -194,6 +196,7 @@ function pintarVideos() {
       f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.id) + '?rel=0&playsinline=1';
       f.title = v.titulo;
       f.loading = 'lazy';
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
       f.allow = 'autoplay; encrypted-media; picture-in-picture';
       f.allowFullscreen = true;
       marco.appendChild(f);
