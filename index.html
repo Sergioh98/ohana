@@ -42,12 +42,13 @@ body{font-family:var(--redonda);color:var(--blanco);min-height:100vh;overflow-x:
 .temblar{animation:temblar .4s}
 @keyframes temblar{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
 main{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:60px 20px 180px}
-.hero{text-align:center;min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.hero{text-align:center;min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .saludo{font-family:var(--mano);font-size:clamp(3rem,11vw,6.5rem);color:var(--arena);line-height:1;text-shadow:0 4px 0 var(--hibisco)}
-.maquina{font-size:clamp(1.1rem,3.5vw,1.45rem);max-width:34ch;margin:26px auto 0;line-height:1.6;min-height:6em}
+.maquina{font-size:clamp(1.05rem,3.2vw,1.35rem);max-width:40ch;margin:28px auto 0;line-height:1.75;min-height:12em;text-align:left;white-space:pre-line;
+  padding-left:18px;border-left:3px solid var(--hibisco)}
 .cursor{display:inline-block;width:2px;height:1.1em;background:var(--arena);vertical-align:middle;animation:parpadeo 1s steps(1) infinite}
 @keyframes parpadeo{50%{opacity:0}}
-.bajar{margin-top:40px;font-size:2rem;animation:flotar 2s ease-in-out infinite}
+.bajar{margin-top:30px;font-size:2rem;animation:flotar 2s ease-in-out infinite}
 @keyframes flotar{50%{transform:translateY(10px)}}
 h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena);text-align:center;margin:40px 0 8px}
 .sub{text-align:center;opacity:.8;margin-bottom:30px}
@@ -113,7 +114,8 @@ h2{font-family:var(--mano);font-size:clamp(2.2rem,6vw,3.2rem);color:var(--arena)
 var CONFIG = {
   nombre: "Silenis León",
   claveBase64: "ZW5lcmdpYQ==",   // "energia" en base64 (acepta con o sin tilde). Para cambiarla: en la consola escribe btoa("otra")
-  mensaje: "No suelo hacer estas cosas, pero contigo me dieron ganas. Dicen que uno atrae lo que piensa… y últimamente pienso bastante en ti. Así que te hice este rinconcito, solo tuyo 🌺",
+  // \n = salto de línea (pausa un poquito más al escribir)
+  mensaje: "Dicen que nuestra realidad comienza mucho antes de hacerse visible: primero existe en nuestros pensamientos, después en nuestra intención y, quizá, algún día, en nuestra experiencia.\n\nHace unos meses eras alguien que veía pasar.\n\nHoy eres parte de una historia que, de alguna manera, comenzó mucho antes de que nuestras conversaciones existieran. ✨",
   videos: [                      // 👉 ID de YouTube: lo que va después de "v=" o de "/shorts/"
     { id: "U0i8XEcYx10", titulo: "Sus mejores momentos" },
     { id: "raAf_6APRVc", titulo: "¡Está tocándome!" },
@@ -176,11 +178,22 @@ function abrir() {
   pintarVideos();
 }
 
+/* Máquina de escribir: pausa más en puntos, comas y saltos de línea */
 function escribir(txt) {
   var el = document.getElementById('texto');
   if (reducido) { el.textContent = txt; return; }
   var j = 0;
-  (function paso() { if (j <= txt.length) { el.textContent = txt.slice(0, j++); setTimeout(paso, 45); } })();
+  (function paso() {
+    if (j > txt.length) return;
+    el.textContent = txt.slice(0, j);
+    var c = txt.charAt(j - 1);
+    var espera = 35;
+    if (c === '\n') espera = 450;
+    else if (c === '.' || c === ':') espera = 380;
+    else if (c === ',') espera = 160;
+    j++;
+    setTimeout(paso, espera);
+  })();
 }
 
 function pintarVideos() {
